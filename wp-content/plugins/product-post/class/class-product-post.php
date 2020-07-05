@@ -26,6 +26,7 @@ class Product_Post {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class/class-product-post-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class/class-product-post-admin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class/class-product-post-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'class/class-product-post-json-api.php';
 
 		$this->loader = new Product_Post_Loader();
 	}
@@ -70,6 +71,13 @@ class Product_Post {
 		$this->loader->add_shortcode( 'gallary_product_post', $plugin_public, 'gallary_per_post' );
 		$this->loader->add_shortcode( 'display_product_price', $plugin_public, 'display_product_price' );
 		$this->loader->add_shortcode( 'display_main_title', $plugin_public, 'display_main_title' );
+	}
+	
+	private function define_json_api_hooks() {
+	    $plugin_json_api = new Product_Post_Json_Api( $this->get_plugin_name(), $this->get_version() );
+	    $this->loader->add_action( 'rest_api_init', $plugin_json_api, 'category_rest_rout_by_id' );
+	    $this->loader->add_action( 'rest_api_init', $plugin_json_api, 'category_rest_rout_by_name' );
+	    
 	}
 
 	

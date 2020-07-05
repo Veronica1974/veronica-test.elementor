@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Child
- * @since Twenty Twenty 1.0
+ * @since Twenty Twenty Child1.0
  */
 
 $entry_header_classes = '';
@@ -41,13 +41,14 @@ if ( is_singular() ) {
 
 			<?php
 		}
+		
 
-		if ( is_singular() ) {
-		    echo wp_specialchars_decode(do_shortcode('[display_main_title id="'. $post->ID.'" sinular="sinular"]', false));
+		 if ( is_singular() ) {
+		    echo apply_filters('the_main_title_product', $post->ID, 'sinular');
 		} else {
-		    echo wp_specialchars_decode(do_shortcode('[display_main_title id="'. $post->ID.'" ]', false));
+		    echo apply_filters('the_main_title_product', $post->ID, '');
 		    
-		}
+		} 
 
 		$intro_text_width = '';
 

@@ -76,7 +76,7 @@ class Product_Post_Public
             'sinular'=>'',
         ], $atts );
         $post = get_post( $rg->id );    
-        if(!empty($atts['sinular'])){
+        if(!empty($rg->sinular)){
             $title = '<h1 class="entry-title">'.$post->post_title. '</h1>';
             
         }else{
@@ -84,7 +84,7 @@ class Product_Post_Public
         }
         
         wp_reset_postdata();
-        return wp_specialchars($title);
+        return $title;
     }
     
     public function display_product_price($atts){

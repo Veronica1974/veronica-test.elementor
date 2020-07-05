@@ -1,6 +1,6 @@
 <?php 
 
-add_action( 'wp_enqueue_scripts', 'child_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'child_theme_enqueue_styles');
 function child_theme_enqueue_styles() {
     $parenthandle = 'parent-style'; // This is 'twentytwenty-style' for the Twenty Twenty theme.
     $theme = wp_get_theme();
@@ -30,10 +30,16 @@ function shocode_filter($postid){
 
 add_filter( 'the_product_content', 'shocode_filter', 10,1 );
 
-function shotcode_title($postid){
-    $title = do_shortcode('[display_main_title id="'. $postid.'" sinular="sinular"]');
+function shotcode_title($postid, $singular = ''){
+    if(!empty($singular)){
+        $title = do_shortcode('[display_main_title id="'. $postid.'" sinular="sinular"]');
+        
+    }else{
+        $title = do_shortcode('[display_main_title id="'. $postid.'"]');
+        
+    }
     return $title;
 }
 
- //add_filter( 'the_title', 'shotcode_title', 10, 1);
+ add_filter( 'the_main_title_product', 'shotcode_title', 10, 2);
 ?>
