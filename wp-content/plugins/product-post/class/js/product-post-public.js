@@ -15,7 +15,7 @@
 	
 })( jQuery );*/
 
-jQuery(document).ready(function(jQuery) {
+/*jQuery(document).ready(function(jQuery) {
     jQuery('.upload_gallery_button').click(function(event){
         var current_gallery = jQuery( this ).closest( 'label' );
  
@@ -68,3 +68,4 @@ jQuery(document).ready(function(jQuery) {
         return false;
     });
 });
+*/

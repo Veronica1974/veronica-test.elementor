@@ -12,49 +12,7 @@ class Product_Post_Admin
         $this->version = $version;
     }
  
-    public function cpt_image_box()
-    {
-        // Move the image metabox from the sidebar to the normal position
-        $screens = array( 'product_acf' );
-        remove_meta_box( 'postimagediv', $screens, 'side' );
-        add_meta_box(
-            'postimagediv',
-            __( 'Front of Card Image', 'product-post' ),
-            'post_thumbnail_meta_box',
-            $screens,
-            'side',
-            'default'
-        );
-        // Move the image metabox from the sidebar to the normal position
-        $screens = array( 'co_readings' );
-        remove_meta_box( 'postimagediv', $screens, 'side' );
-        add_meta_box(
-            'postimagediv',
-            __( 'Back of Card Image', 'product-post' ),
-            'post_thumbnail_meta_box',
-            $screens,
-            'side',
-            'default'
-        );
-        //remove Astra metaboxes from our cpt
-        $screens = array(
-            'product_acf',
-            'co_readings',
-            'co_positions',
-            'co_descriptions'
-        );
-        remove_meta_box( 'astra_settings_meta_box', $screens, 'side' );
-        // Remove Astra Settings in Posts
-        add_meta_box(
-            'back-metabox',
-            __( 'Previous Page', 'product-post' ),
-            array( $this, 'render_back_button_metabox' ),
-            $screens,
-            'side',
-            'high'
-        );
-    }
-    
+ 
   
     public function enqueue_styles()
     {
